@@ -1,7 +1,7 @@
 
 //( function () {
 
-export 	class CinematicCamera extends THREE.PerspectiveCamera {
+export default	class CinematicCamera extends THREE.PerspectiveCamera {
 
 		constructor( fov, aspect, near, far ) {
 
