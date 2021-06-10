@@ -1,6 +1,4 @@
-import {
-	CinematicCamera
-}from '..\three.js-master\examples\js\cameras\CinematicCamera.js';
+import 	CinematicCamera from '.\\examples\js\cameras\CinematicCamera.js';
 
 window.addEventListener("DOMContentLoaded", init);
 	function init(){
