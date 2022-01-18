@@ -75,9 +75,13 @@ function Makepage({pagenum,Prop,func}){
             break;
         case 2:
             //CGページ
+            return(<>
+            </>);
             break;
         case 3:
             //活動記録ページ
+            return(<>
+                </>);    
             break;
         default:
             return(
