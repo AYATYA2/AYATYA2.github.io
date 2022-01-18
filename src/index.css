@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.pmb{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    color: brown;
+    font-size: large;
+    margin: auto;
+    
+    text-align: center;
+}
+h1{
+    
+    text-align: center;
+}
+.Openbutton{
+    margin: 1%;
+    
+    text-align: center;
+}
