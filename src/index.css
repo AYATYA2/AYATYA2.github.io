@@ -89,3 +89,40 @@ header{
     background-color: rgb(0, 27, 27);
     height: 100vh;
 }
+.pagechengeanimation{
+    position: absolute;
+    width: 100vw;
+    height: 10vh;
+    background-color: yellow;
+    z-index: 1000;
+}
+
+#n02{
+    top: 10vh;
+    left: 10vw;
+}
+#n03{
+    top: 20vh;
+    left: 20vw;
+}#n04{
+    top: 30vh;
+    left: 30vw;
+}#n05{
+    top: 40vh;
+    left: 40vw;
+}#n06{
+    top: 50vh;
+    left: 50vw;
+}#n07{
+    top: 60vh;
+    left: 60vw;
+}#n08{
+    top: 70vh;
+    left: 70vw;
+}#n09{
+    top: 80vh;
+    left: 80vw;
+}#n10{
+    top: 90vh;
+    left: 90vw;
+}
