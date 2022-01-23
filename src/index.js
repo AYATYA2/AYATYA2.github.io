@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import { Transition } from 'react-transition-group';
 import './index.css';
+import Background from "./images/2022-01-20_10-16-17_659.png";
 
 
 //アニメーションのスタイル4種類を定義(使わないものは省略可能)
@@ -110,8 +111,51 @@ function Githubpage({inProp}){
 function Pagechenge() {
     const [pagenumber,setpagenumber]=useState(0);
     const [Prop,setProp]=useState(false)
+    if(document.documentElement.clientWidth*Math.sqrt(2)>document.documentElement.clientHeight){
+        //console.log("widepage");
+        return(
+            <div className='PCpagewide'>
+            <div className='widepageleft'></div>
+            <div className='widepagecenter'>
+            <header>
+              <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
+              <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
+              <Pagemovebutton value={"CG"} func={setpagenumber} func2={setProp} num={2}/>
+              <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
+            </header>
+            <Pagetitle pagenum={pagenumber}/>
+            <Makepage pagenum={pagenumber} Prop={Prop} func={setProp} className="pagecontents"/>
+            </div>
+            <div className='widepageright'></div>
+            </div>  
+            
+            );
+    
+    }else{
+        //console.log("longpage");
+        return(
+            <div className='PCpagelong'>
+            <header>
+              <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
+              <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
+              <Pagemovebutton value={"CG"} func={setpagenumber} func2={setProp} num={2}/>
+              <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
+            </header>
+            <Pagetitle pagenum={pagenumber}/>
+            <Makepage pagenum={pagenumber} Prop={Prop} func={setProp} className="pagecontents"/>
+         
+            </div>  
+            
+            );
+    
+    }
+}
+
+function Smartphonepage(){
+    const [pagenumber,setpagenumber]=useState(0);
+    const [Prop,setProp]=useState(false)
     return(
-        <div>
+        <div className='Smartphonepage'>
         <header>
           <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
           <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
@@ -119,12 +163,28 @@ function Pagechenge() {
           <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
         </header>
         <Pagetitle pagenum={pagenumber}/>
-        <Makepage pagenum={pagenumber} Prop={Prop} func={setProp}/>
+        <Makepage pagenum={pagenumber} Prop={Prop} func={setProp} className="pagecontents"/>
         </div>  
         );
 }
 
-ReactDOM.render(
-    <Pagechenge />,
-    document.getElementById('root')
-);
+function switchBypagesize(){
+//画面幅を取得して切り替える
+if (window.matchMedia('(max-width: 767px)').matches) {
+    //スマホ処理
+    ReactDOM.render(
+        <Smartphonepage />,
+        document.getElementById('root')
+    );
+} else if (window.matchMedia('(min-width:768px)').matches) {
+    //PC処理
+    ReactDOM.render(
+        <Pagechenge />,
+        document.getElementById('root')
+    );
+}
+
+}
+
+window.onload=switchBypagesize;
+window.onresize=switchBypagesize;
