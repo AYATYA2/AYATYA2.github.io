@@ -19,12 +19,12 @@ const transitionStyle = {
     },
   
     exiting: {
-      transition: "all 1s ease",
+      //transition: "all 1s ease",
       transform: "translateY(220px)",
       opacity:0,
     },
     exited: {
-      transition: "all 1s ease",
+      //transition: "all 1s ease",
       transform: "translateY(220px)",
       opacity:0,
     },
@@ -76,16 +76,6 @@ const transitionStyle = {
     },
   };
 
- 
-/*
-  function Pagetitle ({pagenum}){
-    const title=["My Protfolio","My Program","My CG","My Activity"];
-    return(
-    <h1>{title[pagenum]}</h1>
-    )
-}
-*/
-//*
 function Pagetitle ({pagenum,Prop}){
     const title=["My Protfolio","My Program","My CG","My Activity"];
     return(
@@ -97,7 +87,6 @@ function Pagetitle ({pagenum,Prop}){
         </Transition>
     );
 }      
-//*/
     
 function Pagemovebutton({value,func,func2,num}){
     return(<button className='pmb' onClick={
@@ -115,7 +104,7 @@ function Pagechengeanimation({prop,func}){
     const Pagechengecallback={
         onExited:function(){
             setTimeout(func(true),1000);
-            console.log(true);
+            //console.log(true);
         },
         //OnExit:()=>func(true),
         //OnExiting:()=>func(true),
@@ -165,21 +154,22 @@ function Makepage({pagenum,Prop,func}){
         case 0:
             //ホーム
             return(
-            <>
-            </>
+            <footer>
+                連絡先
+            </footer>
             );
             break;
         case 1:
             //Programページ
             return(
-            <> 
+            <div className='myprogram'> 
           
             <Githubpage inProp={Prop}/>
             <Githubpage inProp={Prop}/>
             <Githubpage inProp={Prop}/>
             <Githubpage inProp={Prop}/>
             
-            </>
+            </div>
             );
             break;
         case 2:
@@ -205,12 +195,13 @@ function Githubpage({inProp}){
     return(
         <Transition in={inProp} timeout={1500}>
             {state=>
-                (<button className='gitbutton' style={
+                (<div className='gitbutton' style={
                     transitionStyle[state]
                 } onClick={function(){
                 }}>
-                Githubpage
-                </button>
+                    Githubpage
+                  
+                </div>
                 )}
         </Transition>
     );
