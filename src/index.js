@@ -4,6 +4,8 @@ import { Transition } from 'react-transition-group';
 import './index.css';
 import Background from "./images/2022-01-20_10-16-17_659.png";
 import gittab from "./images/gittab.png";
+import antgittab from "./images/antmemorytag.png";
+import palnetstag from "./images/planetstag.png";
 
 //アニメーションのスタイル4種類を定義(使わないものは省略可能)
 const transitionStyle = {
@@ -164,10 +166,10 @@ function Makepage({pagenum,Prop,func}){
             return(
             <div className='myprogram'> 
           
-            <Githubpage inProp={Prop}/>
-            <Githubpage inProp={Prop}/>
-            <Githubpage inProp={Prop}/>
-            <Githubpage inProp={Prop}/>
+            <Githubpage inProp={Prop} tab={"anttab"}/>
+            <Githubpage inProp={Prop} tab={"planetstab"}/>
+            <Githubpage inProp={Prop} tab={"gittab"}/>
+            <Githubpage inProp={Prop} tab={"gittab"}/>
             
             </div>
             );
@@ -191,11 +193,11 @@ function Makepage({pagenum,Prop,func}){
     }
 }
 
-function Githubpage({inProp}){
+function Githubpage({inProp,tab}){
     return(
         <Transition in={inProp} timeout={1500}>
             {state=>
-                (<div className='gitbutton' style={
+                (<div className='gitbutton' id={tab} style={
                     transitionStyle[state]
                 } onClick={function(){
                 }}>
