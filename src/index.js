@@ -172,10 +172,10 @@ function Makepage({pagenum,Prop,func}){
             return(
             <div className='myprogram'> 
           
-            <Githubpage inProp={Prop} tab={"anttab"} link={null}/>
-            <Githubpage inProp={Prop} tab={"planetstab"} link={null}/>
-            <Githubpage inProp={Prop} tab={"gittab"} link={null}/>
-            <Githubpage inProp={Prop} tab={"gittab"} link={null}/>
+            <Githubpage inProp={Prop} tab={"anttab"} url={'https://github.com/MediaPrograming/AntSimulation'}/>
+            <Githubpage inProp={Prop} tab={"planetstab"} url={'https://github.com/AYATYA2/planets-in-room'}/>
+            <Githubpage inProp={Prop} tab={"gittab"} url={'https://www.google.com'}/>
+            <Githubpage inProp={Prop} tab={"gittab"} url={'https://www.google.com'}/>
             
             </div>
             );
@@ -184,9 +184,9 @@ function Makepage({pagenum,Prop,func}){
             //CGページ
             return(
             <div className='mycg'>
-            <CGcontents inProp={Prop} url={unyounyo}/>
-            <CGimgcontents inProp={Prop} url={null}/>
 
+            <CGcontents inProp={Prop} url={unyounyo}/>
+            
             </div>);
             break;
         case 4:
@@ -210,15 +210,17 @@ function Makepage({pagenum,Prop,func}){
             break;
     }
 }
-
-function Githubpage({inProp,tab,link}){
+function Githubpage({inProp,tab,url}){
     return(
         <Transition in={inProp} timeout={1500}>
             {state=>
                 (<div className='gitbutton' id={tab} style={
                     transitionStyle[state]
-                } onClick={function(){
-                }}>
+                } onClick={()=>{
+                    window.open(url,'_blank')
+                     
+                }
+                }>
                     Githubpage
                   
                 </div>
@@ -227,6 +229,7 @@ function Githubpage({inProp,tab,link}){
     );
     
 }
+
 
 function CGcontents({inProp,url}){
     return(

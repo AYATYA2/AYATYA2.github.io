@@ -120,7 +120,7 @@ grid-template-columns: 1fr 1fr 1fr;
 }
 #page2{
     background-color:rgba(8, 6, 110,0.3);
-    height: auto;
+
 }
 #page3{
     background-size: auto;
@@ -187,12 +187,15 @@ grid-template-columns: 1fr 1fr 1fr;
 }
 .mycg{
  align-content: center;
+ height: auto;
+
 }
 .cgcontents{
     background-image: url(./images/movietitle.png);
     background-size: 70.71067812vh 39.78vh;
     background-repeat: no-repeat;
     height: 39.78vh;
+    
 }
 .cgimgcontents{
     /*background-image: url(./images/movietitle.png);
@@ -205,7 +208,6 @@ grid-template-columns: 1fr 1fr 1fr;
     width: 50.91vh;
     height: auto;
     padding-top: 7.5%;
-    padding-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
 }
