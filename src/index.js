@@ -1,12 +1,14 @@
 import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import { Transition } from 'react-transition-group';
+import { ReactMediaRecorder } from 'react-media-recorder'
 import './index.css';
 import Background from "./images/2022-01-20_10-16-17_659.png";
 import gittab from "./images/gittab.png";
 import antgittab from "./images/antmemorytag.png";
 import palnetstag from "./images/planetstag.png";
-
+import cgtitle from "./images/movietitle.png";
+import unyounyo from "./movies/1910697.mp4";
 //アニメーションのスタイル4種類を定義(使わないものは省略可能)
 const transitionStyle = {
     entered: {
@@ -68,18 +70,20 @@ const transitionStyle = {
     exiting: {
       //transition: "all 1s ease",
       transform: "translateX(100%)",
+      width:0 ,
       opacity:0,
       
     },
     exited: {
       //transition: "all 1s ease",
       transform: "translateX(100%)",
+      
       opacity:1,
     },
   };
 
 function Pagetitle ({pagenum,Prop}){
-    const title=["My Protfolio","My Program","My CG","My Activity"];
+    const title=["My Protfolio","My Program","My CG","My Activity","My Illustration"];
     return(
         <Transition in={Prop} timeout={1500}>
             {state=>(
@@ -151,14 +155,16 @@ function Pagechengeanimation({prop,func}){
 }
 
 function Makepage({pagenum,Prop,func}){
-    
+ 
      switch (pagenum) {   
         case 0:
             //ホーム
             return(
-            <footer>
-                連絡先
-            </footer>
+                <div className='home'>
+                <footer>
+                    連絡先
+                </footer>
+                </div>
             );
             break;
         case 1:
@@ -166,19 +172,31 @@ function Makepage({pagenum,Prop,func}){
             return(
             <div className='myprogram'> 
           
-            <Githubpage inProp={Prop} tab={"anttab"}/>
-            <Githubpage inProp={Prop} tab={"planetstab"}/>
-            <Githubpage inProp={Prop} tab={"gittab"}/>
-            <Githubpage inProp={Prop} tab={"gittab"}/>
+            <Githubpage inProp={Prop} tab={"anttab"} link={null}/>
+            <Githubpage inProp={Prop} tab={"planetstab"} link={null}/>
+            <Githubpage inProp={Prop} tab={"gittab"} link={null}/>
+            <Githubpage inProp={Prop} tab={"gittab"} link={null}/>
             
             </div>
             );
             break;
         case 2:
             //CGページ
-            return(<>
-            </>);
+            return(
+            <div className='mycg'>
+            <CGcontents inProp={Prop} url={unyounyo}/>
+            <CGimgcontents inProp={Prop} url={null}/>
+
+            </div>);
             break;
+        case 4:
+                //イラストページ
+                return(
+                <div className='myillustration'>
+                <CGimgcontents inProp={Prop} url={gittab}/>
+    
+                </div>);
+                break;
         case 3:
             //活動記録ページ
             return(<>
@@ -193,7 +211,7 @@ function Makepage({pagenum,Prop,func}){
     }
 }
 
-function Githubpage({inProp,tab}){
+function Githubpage({inProp,tab,link}){
     return(
         <Transition in={inProp} timeout={1500}>
             {state=>
@@ -209,6 +227,40 @@ function Githubpage({inProp,tab}){
     );
     
 }
+
+function CGcontents({inProp,url}){
+    return(
+        <Transition in={inProp} timeout={1500}>
+            {state=>
+                (
+                    <ReactMediaRecorder 
+                    video
+                    render={({status,startRecording,stopRecording})=>(
+                    <div className='cgcontents'style={
+                    transitionStyle[state]
+                    }>
+                        <video src={url} controls className='movie'/>
+                    </div>
+                    )}
+                    />
+                )}
+        </Transition>    
+    );
+}
+function CGimgcontents({inProp,url}){
+    return(
+        <Transition in={inProp} timeout={1500}>
+            {state=>
+                (
+                    <div className='cgimgcontents' style={
+                        transitionStyle[state]
+                    }>
+                   <img src={url} className='cg'></img> 
+                   </div>
+                )}
+        </Transition>    
+    );
+}
 function Pagechenge() {
     const [pagenumber,setpagenumber]=useState(0);
     const [Prop,setProp]=useState(true);
@@ -218,15 +270,16 @@ function Pagechenge() {
     if(document.documentElement.clientWidth*Math.sqrt(2)>document.documentElement.clientHeight){
         //console.log("widepage");
         return(
-            <div>
+            <div >
             <Pagechengeanimation prop={Prop} func={setProp}></Pagechengeanimation>
-            <div className='PCpagewide'>
+            <div className='PCpagewide' >
             <div className='widepageleft'></div>
-            <div className='widepagecenter'>
+            <div className='widepagecenter' id={"page"+pagenumber}>
             <header>
               <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
               <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
               <Pagemovebutton value={"CG"} func={setpagenumber} func2={setProp} num={2}/>
+              <Pagemovebutton value={"イラスト"} func={setpagenumber} func2={setProp} num={4}/>
               <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
             </header>
             <Pagetitle pagenum={pagenumber} Prop={Prop}/>
@@ -240,12 +293,13 @@ function Pagechenge() {
     }else{
         //console.log("longpage");
         return(
-            <div className='PCpagelong'>
+            <div className='PCpagelong' id={"page"+pagenumber}>
             <Pagechengeanimation prop={Prop} func={setProp}></Pagechengeanimation>
             <header>
               <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
               <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
               <Pagemovebutton value={"CG"} func={setpagenumber} func2={setProp} num={2}/>
+              <Pagemovebutton value={"イラスト"} func={setpagenumber} func2={setProp} num={4}/>
               <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
             </header>
             <Pagetitle pagenum={pagenumber} Prop={Prop}/>
@@ -262,14 +316,15 @@ function Smartphonepage(){
     const [pagenumber,setpagenumber]=useState(0);
     const [Prop,setProp]=useState(true);
     
-    <Pagechengeanimation prop={Prop}></Pagechengeanimation>
+    //<Pagechengeanimation prop={Prop}></Pagechengeanimation>
     return(
-        <div className='Smartphonepage'>
+        <div className='Smartphonepage' id={"page"+pagenumber}>
         <Pagechengeanimation prop={Prop} func={setProp}></Pagechengeanimation>
         <header>
           <Pagemovebutton value={"Top"} func={setpagenumber} func2={setProp} num={0}/>
           <Pagemovebutton value={"Programing"} func={setpagenumber} func2={setProp} num={1}/>
           <Pagemovebutton value={"CG"} func={setpagenumber} func2={setProp} num={2}/>
+          <Pagemovebutton value={"イラスト"} func={setpagenumber} func2={setProp} num={4}/>
           <Pagemovebutton value={"Activity"} func={setpagenumber} func2={setProp} num={3}/>
         </header>
         <Pagetitle pagenum={pagenumber} Prop={Prop}/>

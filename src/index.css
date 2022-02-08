@@ -21,7 +21,7 @@ body{
 header{
     padding: 5%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     text-align: center;
 }
 #root{
@@ -92,36 +92,52 @@ grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 100vh;
     height: 100%;
 }
+
 .PCpagelong{
-    background-size: auto;
+    
     height: 100%;
-    background-image: url(./images/2022-01-20_10-16-17_659.png);
-    background-size: 70.71067812vh;
-    background-color:rgba(rgb(8, 6, 110),0.3);
     height: 100vh;
     width: 70.71067812vh;
-    background-blend-mode: darken;
     background-repeat: no-repeat;
+}
+#page0{
+    background-blend-mode: darken;
+    background-color:rgba(8, 6, 110,0.3);
+    background-size: auto;
+    background-image: url(./images/2022-01-20_10-16-17_659.png);
+    background-size: 70.71067812vh;
+    background-repeat: no-repeat;
+    
+}
+#page1{
+    background-size: auto;
+    background-image: url(./images/2022-01-20_10-16-17_659.png);
+    background-size: 70.71067812vh;
+    background-color:rgba(8, 6, 110,0.3);
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    
+}
+#page2{
+    background-color:rgba(8, 6, 110,0.3);
+    height: auto;
+}
+#page3{
+    background-size: auto;
+    background-image: url(./images/2022-01-20_10-16-17_659.png);
+    background-size: 70.71067812vh;
+    background-color:rgba(8, 6, 110,0.3);
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    
 }
 .Smartphonepage{
-    background-size: auto;
-    height: 100%;
-    background-image: url(./images/2022-01-20_10-16-17_659.png);
-    background-size: 70.71067812vh;
-    background-color:rgba(0,0,25,0.5);
+     height: 100%;
     width: 70.71067812vh;
     height: 100vh;
-    background-blend-mode: darken;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 .widepagecenter{
-    background-image: url(./images/2022-01-20_10-16-17_659.png);
-    background-size: 70.71067812vh  ;
-    background-color:rgba(0,0,25,0.5);
     height: 100vh;
-    background-blend-mode: darken;
-    background-repeat: no-repeat;
 }
 
 .widepageleft{
@@ -168,4 +184,36 @@ grid-template-columns: 1fr 1fr 1fr;
 }#n10{
     top: 90vh;
     left: 90vw;
+}
+.mycg{
+ align-content: center;
+}
+.cgcontents{
+    background-image: url(./images/movietitle.png);
+    background-size: 70.71067812vh 39.78vh;
+    background-repeat: no-repeat;
+    height: 39.78vh;
+}
+.cgimgcontents{
+    /*background-image: url(./images/movietitle.png);
+    */
+    background-size: 70.71067812vh 39.78vh;
+    background-repeat: no-repeat;
+    height: 39.78vh;
+}
+.movie{
+    width: 50.91vh;
+    height: auto;
+    padding-top: 7.5%;
+    padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cg{
+    height: 31.82vh;
+    width: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
