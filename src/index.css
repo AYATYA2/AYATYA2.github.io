@@ -10,12 +10,14 @@
 html{
     height: 100vh;
     font-family: Kotobuki;
+    overflow: scroll;
+
 }
 body{
     height: 100vh;
     padding: 0%;
     margin: 0%;
-    background-color:rgb(0, 27, 27);
+    background-color:seashell;
     text-align: center;
 }
 header{
@@ -40,7 +42,7 @@ h1{
   
     text-align: left;
     font-family:Mechanoarc;
-    background-color: rgba(160,160,170,0.8);
+    background-color: rgba(210, 210, 228, 0.8);
     width: 40%;
     padding: 2%;
     padding-left: 3%;
@@ -49,7 +51,9 @@ h1{
 }
 .myprogram{
 display:grid;
+grid-template-rows:  1fr;
 grid-template-columns: 1fr 1fr 1fr;
+text-align: center;
 }
 .gitbutton{
     margin-left:1%;
@@ -64,14 +68,12 @@ grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 0%;
     
 }
-#anttab{
-    background-image: url(./images/antmemorytagnoclear.png);
-}
-#planetstab{
-    background-image: url(./images/planetstag.png);
-}
-#gittab{
-    background-image:url(./images/gittab.png);
+
+#github{
+    /*background-image:url(./images/github_git_icon_145985.png);*/
+    background-color: seashell;
+ 
+    
 }
 .Openbutton{
     margin: 1%;
@@ -89,8 +91,13 @@ grid-template-columns: 1fr 1fr 1fr;
 .PCpagewide{
     display: grid;
     grid-template-columns:auto 70.71067812vh auto ;
-    grid-template-rows: 100vh;
-    height: 100%;
+    /*grid-template-rows: max-content;
+    /*height: 100%;
+    */
+    background-color: rgb(0, 27, 27);
+    margin: 0px;
+    padding: 0px;
+    
 }
 
 .PCpagelong{
@@ -138,16 +145,17 @@ grid-template-columns: 1fr 1fr 1fr;
 }
 .widepagecenter{
     height: 100vh;
+    background-color: seashell;
 }
 
 .widepageleft{
-    background-color: rgb(0, 27, 27);
+   /* background-color: rgb(0, 27, 27);
     height: 100vh;
-}
+*/}
 .widepageright{
-    background-color: rgb(0, 27, 27);
+/*    background-color: rgb(0, 27, 27);
     height: 100vh;
-}
+*/}
 .pagechengeanimation{
     position: absolute;
     width: 100vw;
@@ -186,6 +194,7 @@ grid-template-columns: 1fr 1fr 1fr;
     left: 90vw;
 }
 .mycg{
+ 
  align-content: center;
  height: auto;
 
@@ -204,6 +213,12 @@ grid-template-columns: 1fr 1fr 1fr;
     background-repeat: no-repeat;
     height: 39.78vh;
 }
+.myillustration{
+ display:grid;
+ grid-template-rows: 1fr 1fr;
+ grid-template-columns: 1fr 1fr;
+ 
+}
 .movie{
     width: 50.91vh;
     height: auto;
@@ -212,10 +227,6 @@ grid-template-columns: 1fr 1fr 1fr;
     margin-right: auto;
 }
 .cg{
-    height: 31.82vh;
-    width: auto;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 30vh;
+    padding-right: 5px;
 }

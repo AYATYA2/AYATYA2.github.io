@@ -1,3 +1,5 @@
+npm start
+
 npm run build
 git commit -am 'Add hompage'
 git push origin main

@@ -4,11 +4,15 @@ import { Transition } from 'react-transition-group';
 import { ReactMediaRecorder } from 'react-media-recorder'
 import './index.css';
 import Background from "./images/2022-01-20_10-16-17_659.png";
-import gittab from "./images/gittab.png";
+import github from "./images/gittab.png";
 import antgittab from "./images/antmemorytag.png";
 import palnetstag from "./images/planetstag.png";
 import cgtitle from "./images/movietitle.png";
 import unyounyo from "./movies/1910697.mp4";
+import giticon from "./images/github_git_icon_145985.png";
+import pixivicon from "./images/logo_icon_r.png";
+import texas from "./images/texas.png";
+import karnerian from "./images/carnerian.png";
 //アニメーションのスタイル4種類を定義(使わないものは省略可能)
 const transitionStyle = {
     entered: {
@@ -36,7 +40,7 @@ const transitionStyle = {
   const titletransitionStyle = {
     entering: {
       transition: "all 1s ease",
-      transform: "translateX(50vw) ",
+      transform: "translateX(50px) ",
       opacity:0,
     },
     entered: {
@@ -46,7 +50,7 @@ const transitionStyle = {
     },
     exiting: {
       //transition: "all 1s ease",
-      transform: "translateX(50vw)",
+      transform: "translateX(50px)",
       opacity:0,
     },
     exited: {
@@ -85,7 +89,7 @@ const transitionStyle = {
 function Pagetitle ({pagenum,Prop}){
     const title=["My Protfolio","My Program","My CG","My Activity","My Illustration"];
     return(
-        <Transition in={Prop} timeout={1500}>
+        <Transition in={Prop} timeout={500}>
             {state=>(
             <h1 style={
                     titletransitionStyle[state]
@@ -116,7 +120,7 @@ function Pagechengeanimation({prop,func}){
         //OnExiting:()=>func(true),
     };
     return(
-        <Transition in={prop} timeout={{enter:1000,exit:1,}} {...Pagechengecallback} >
+        <Transition in={prop} timeout={{enter:1,exit:1,}} {...Pagechengecallback} >
             {state=>(
                 <div > 
             <div  style={
@@ -172,10 +176,9 @@ function Makepage({pagenum,Prop,func}){
             return(
             <div className='myprogram'> 
           
-            <Githubpage inProp={Prop} tab={"anttab"} url={'https://github.com/MediaPrograming/AntSimulation'}/>
-            <Githubpage inProp={Prop} tab={"planetstab"} url={'https://github.com/AYATYA2/planets-in-room'}/>
-            <Githubpage inProp={Prop} tab={"gittab"} url={'https://www.google.com'}/>
-            <Githubpage inProp={Prop} tab={"gittab"} url={'https://www.google.com'}/>
+            <Githubpage inProp={Prop} tab={"github"} url={'https://github.com/AYATYA2'}/>
+            <Githubpage inProp={Prop} tab={"github"} url={'https://github.com/AYATYA2'}/>
+            <Githubpage inProp={Prop} tab={"github"} url={'https://github.com/AYATYA2'}/>
             
             </div>
             );
@@ -193,7 +196,10 @@ function Makepage({pagenum,Prop,func}){
                 //イラストページ
                 return(
                 <div className='myillustration'>
-                <CGimgcontents inProp={Prop} url={gittab}/>
+                <CGimgcontents inProp={Prop} tab={texas} url={"https://www.pixiv.net/users/40573143"}/>
+                <CGimgcontents inProp={Prop} tab={karnerian} url={"https://www.pixiv.net/users/40573143"}/>
+                <h2>more</h2>
+                <CGimgcontents inProp={Prop} tab={pixivicon} url={"https://www.pixiv.net/users/40573143"}/>
     
                 </div>);
                 break;
@@ -212,7 +218,7 @@ function Makepage({pagenum,Prop,func}){
 }
 function Githubpage({inProp,tab,url}){
     return(
-        <Transition in={inProp} timeout={1500}>
+        <Transition in={inProp} timeout={500}>
             {state=>
                 (<div className='gitbutton' id={tab} style={
                     transitionStyle[state]
@@ -221,8 +227,10 @@ function Githubpage({inProp,tab,url}){
                      
                 }
                 }>
-                    Githubpage
                   
+                  github<br></br>
+                  <img src={giticon} width={"100vh"} height={"100vh"}/>
+                  <br></br>
                 </div>
                 )}
         </Transition>
@@ -233,7 +241,7 @@ function Githubpage({inProp,tab,url}){
 
 function CGcontents({inProp,url}){
     return(
-        <Transition in={inProp} timeout={1500}>
+        <Transition in={inProp} timeout={500}>
             {state=>
                 (
                     <ReactMediaRecorder 
@@ -250,15 +258,18 @@ function CGcontents({inProp,url}){
         </Transition>    
     );
 }
-function CGimgcontents({inProp,url}){
+function CGimgcontents({inProp,tab,url}){
     return(
-        <Transition in={inProp} timeout={1500}>
+        <Transition in={inProp} timeout={500}>
             {state=>
                 (
                     <div className='cgimgcontents' style={
                         transitionStyle[state]
-                    }>
-                   <img src={url} className='cg'></img> 
+                    }  onClick={()=>{
+                        window.open(url,'_blank')
+                         
+                    }}>
+                   <img src={tab} className='cg'></img>
                    </div>
                 )}
         </Transition>    
@@ -272,6 +283,7 @@ function Pagechenge() {
     
     if(document.documentElement.clientWidth*Math.sqrt(2)>document.documentElement.clientHeight){
         //console.log("widepage");
+        
         return(
             <div >
             <Pagechengeanimation prop={Prop} func={setProp}></Pagechengeanimation>
