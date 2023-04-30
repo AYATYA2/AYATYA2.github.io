@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import ReactDOM from 'react-dom';
 import { Transition } from 'react-transition-group';
 import { ReactMediaRecorder } from 'react-media-recorder'
+import { Canvas,useFrame } from '@react-three/fiber';
 import './index.css';
 import Background from "./images/2022-01-20_10-16-17_659.png";
 import github from "./images/gittab.png";
